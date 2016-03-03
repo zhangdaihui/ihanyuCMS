@@ -1,0 +1,91 @@
+<php>
+	//标题对应
+	$enTitleArr=array(		 
+		'0' => 'qzone',
+		'1' => 'tsina',
+		'2' => 'weixin',
+		'3' => 'tqq',
+		'4' => 'renren',
+		'5' => 'douban',
+		'6' => 'tieba',
+		'7' => 'cqq',
+		'8' => 'more',
+	);
+	$cnTitleArr=array(		 
+		'0' => 'QQ空间',
+		'1' => '新浪微博',
+		'2' => '微信',
+		'3' => '腾讯微博',
+		'4' => '人人网',
+		'5' => '豆瓣网',
+		'6' => '百度贴吧',
+		'7' => 'QQ好友',
+		'8' => ''
+	);
+</php>
+<switch name="addons_config.share_type">
+	<case value="1">
+		<!-- 百度分享 -->
+		<if condition="$addons_config['share_style'] eq 0">
+			<div class="bdsharebuttonbox">
+				<php>
+					switch($addons_config['icon_type']){
+						case 0:
+							$size=16;
+							break;
+						case 1:
+							$size=24;
+							break;
+						default:
+							$size=32;
+					}
+				</php>
+				<if condition="$addons_config['title'] neq ''">
+					<span style="float:left; margin-top:{$size/2-4}px;">{$addons_config.title}</span>
+				</if>
+				<volist name="addons_config.share_lists" id="v">
+					<a title="分享到{$cnTitleArr[$v]}" href="#" class="bds_{$enTitleArr[$v]}" data-cmd="{$enTitleArr[$v]}"></a>
+				</volist>
+			</div>
+			<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"{$size}"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+		<else />
+			<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"slide":{"type":"slide","bdImg":"0","bdPos":"right","bdTop":"100"},"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+		</if>
+		<!-- /百度分享 -->
+	</case>
+	<case value="2">
+		<!-- jiathis分享 -->
+		<if condition="$addons_config['share_style'] eq 0">
+			<php>
+				switch($addons_config['icon_type']){
+					case 0:
+						$str='';
+						$size=16;
+						break;
+					case 1:
+						$str='_24x24';
+						$size=24;
+						break;
+					default:
+						$size=32;
+						$str='_32x32';
+				}
+			</php>
+			<div class="jiathis_style{$str}">
+				<if condition="$addons_config['title'] neq ''">
+					<span style="float:left; margin-top:{$size/2-10}px;">{$addons_config.title}</span>
+				</if>
+				<volist name="addons_config.share_lists" id="v">
+					<a class="jiathis_button_{$enTitleArr[$v]}"></a>
+				</volist>
+				<if condition="in_array(8,$addons_config['share_lists'])">
+					<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+				</if>
+			</div>
+			<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+		<else />
+			<script type="text/javascript" src="http://v3.jiathis.com/code/jiathis_r.js?move=0" charset="utf-8"></script>
+		</if>
+		<!-- /jiathis分享 -->
+	</case>
+</switch>

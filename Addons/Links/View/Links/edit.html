@@ -1,0 +1,122 @@
+<extend name="Public/base"/>
+
+<block name="body">
+	<script type="text/javascript" src="__STATIC__/uploadify/jquery.uploadify.min.js"></script>
+	<div class="main-title cf">
+		<h2>
+		<if condition="$_GET['_action'] eq 'add'">
+			新增
+			<else/>
+			编辑
+		</if>友情连接</h2>
+	</div>
+	<!-- 表单 -->
+	<form id="form" action="{:addons_url('Links://Links/update')}" method="post" class="form-horizontal">
+		<!-- 基础文档模型 -->
+		<div id="tab1" class="tab-pane in tab1">
+			<div class="form-item cf">
+				<label class="item-label">站点名称<span class="check-tips">（请输入友情连接站点名称）</span></label>
+				<div class="controls">
+					<input type="text" class="text input-large" name="title" value="{$info.title}">
+				</div>
+			</div>
+			<div class="form-item cf">
+				<label class="item-label">外链地址<span class="check-tips">（请填写带http://的全路径）</span></label>
+				<div class="controls">
+					<input type="text" class="text input-large" name="link" value="{$info.link}">
+				</div>
+			</div>
+			<div class="form-item cf" id="type1">
+				<label class="item-label">链接图片<span class="check-tips">（请上传链接图片）</span></label>
+				<div class="controls">
+					<input type="file" id="upload_picture_ptspic">
+					<input type="hidden" name="cover_id" id="cover_id_ptspic" value="{$info.cover_id}"/>
+					<div class="upload-img-box">
+						<notempty name="info['cover_id']">
+							<div class="upload-pre-item"><img src="__ROOT__{$info.path}"/>
+							</div>
+						</notempty>
+					</div>
+				</div>
+				<script type="text/javascript">
+										//上传图片
+					/* 初始化上传插件 */
+					$("#upload_picture_ptspic").uploadify({
+					"height"          : 30,
+					"swf"             : "__STATIC__/uploadify/uploadify.swf",
+					"fileObjName"     : "download",
+					"buttonText"      : "上传图片",
+					"uploader"        : "{:U('File/uploadPicture',array('session_id'=>session_id()))}",
+					"width"           : 120,
+					'removeTimeout'	  : 1,
+					'fileTypeExts'	  : '*.jpg; *.png; *.gif;',
+					"onUploadSuccess" : uploadPicture{$field.name},
+					'onFallback' : function() {
+					alert('未检测到兼容版本的Flash.');
+					}
+					});
+					function uploadPicture{$field.name}(file, data){
+					var data = $.parseJSON(data);
+					var src = '';
+					if(data.status){
+					$("#cover_id_ptspic").val(data.id);
+					src = data.url || data.path
+					$("#cover_id_ptspic").parent().find('.upload-img-box').html(
+					'<div class="upload-pre-item"><img src="__ROOT__' + src + '"/></div>'
+					);
+					} else {
+					updateAlert(data.info);
+					setTimeout(function(){
+					$('#top-alert').find('button').click();
+					$(that).removeClass('disabled').prop('disabled',false);
+					},1500);
+					}
+					}
+				</script>
+			</div>
+			<div class="form-item cf">
+				<label class="item-label">nofollow设置<span class="check-tips"></span></label>
+				<div class="controls">
+					<label class="radio">
+						<input type="radio" value="1" <eq name="info['nofollow']" value="1">checked</eq> <if condition="$_GET['_action'] eq 'add'">checked</if> name="nofollow">
+						跟踪</label>
+					<label class="radio">
+						<input type="radio" value="0" <eq name="info['nofollow']" value="0">checked</eq> name="nofollow">
+						不跟踪</label>
+				</div>
+			</div>
+			<div class="form-item cf">
+				<label class="item-label">状态<span class="check-tips"></span></label>
+				<div class="controls">
+					<label class="radio">
+						<input type="radio" value="1" <eq name="info['status']" value="1">checked</eq> <if condition="$_GET['_action'] eq 'add'">checked</if> name="status">
+						启用</label>
+					<label class="radio">
+						<input type="radio" value="0" <eq name="info['status']" value="0">checked</eq> name="status">
+						禁用</label>
+				</div>
+			</div>
+			<div class="form-item cf">
+				<label class="item-label">分组类型<span class="check-tips"></span></label>
+				<div class="controls">
+					<select name="type">
+						<volist name="group_type" id="so">
+							<option value="{$key}"  <if condition="$key eq $info['type']">selected</if> >{$so}</option>
+						</volist>
+					</select>
+				</div>
+			</div>
+			<div class="form-item cf">
+				<label class="item-label">优先级</label>
+				<div class="controls">
+					<input type="text" class="text input-large" name="sort" value="{$info.sort}">
+				</div>
+			</div>
+		</div>
+		<input type="hidden" name="id" value="{$info.id}"/>
+		<div class="form-item cf">
+			<input class="btn submit-btn hidden" type="submit" value="确 定" />
+			<input class="btn btn-return" type="reset" value="重置" />
+		</div>
+	</form>
+</block>

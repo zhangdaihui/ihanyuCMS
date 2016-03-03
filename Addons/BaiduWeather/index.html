@@ -1,0 +1,89 @@
+<if condition="$param['name'] neq ''">
+	<div class='controls'>
+		<style type="text/css">
+			#result b {font-weight:normal;}
+			#result b,#result img {vertical-align:middle;}
+		</style>
+		<input type="text" class="text input-small" id="input_{$param['name']}" name="{$param['name']}" value="{$param['baiduweather']}">
+		<span id="result"></span>
+		<script type="text/javascript">
+			//获取天气
+			function getWeather(){
+				var sCity=$("#input_{$param['name']}").val();
+				if(!sCity){
+					return false;
+				}
+				$.ajax({
+					 type : "get",
+					 async:false,
+					 url : "http://api.map.baidu.com/telematics/v3/weather?location="+sCity+"&output=json&ak=tBW47T7lwTiNXTigAGMKt42K&callback=weather",
+					 dataType : "jsonp",
+					 jsonp: "callback",          //传递给请求处理程序或页面的，用以获得jsonp回调函数名的参数名(默认为:callback)
+					 jsonpCallback:"weather",    //自定义的jsonp回调函数名称，默认为jQuery自动生成的随机函数名
+					 success : function(json){
+						 var str='';
+						 if(json.error==0){
+							 var res=json.results
+							 var today=res[0].weather_data[0];
+							 str+='<b>'+today.date+'</b> '+'<img src="'+today.dayPictureUrl+'" title="'+today.weather+'" /> '+'<img src="'+today.nightPictureUrl+'"  title="'+today.weather+'"/> <b>'+today.temperature+'</b>';
+						 }else{
+							str+='<font color="red">天气获取失败,请检查地区名称是否正确!</font>';
+						 }
+						 $('#result').html(str);
+					 },
+					 error:function(){
+						 alert('<font color="red">天气获取失败,请检查地区名称是否正确!</font>');
+					 }
+				});
+			}
+			$(function () {
+				getWeather();
+				$("#input_{$param['name']}").on('blur',function(){
+					getWeather();
+				});
+			});
+		</script>
+	</div>
+<else />
+	<!-- 百度天气 start -->
+	<div id="result">
+		<script type="text/javascript">
+			//获取天气
+			function getWeather(){
+				var sCity="{$param['city']}";
+				if(!sCity){
+					return false;
+				}
+				$.ajax({
+					 type : "get",
+					 async:false,
+					 url : "http://api.map.baidu.com/telematics/v3/weather?location="+sCity+"&output=json&ak=tBW47T7lwTiNXTigAGMKt42K&callback=weather",
+					 dataType : "jsonp",
+					 jsonp: "callback",          //传递给请求处理程序或页面的，用以获得jsonp回调函数名的参数名(默认为:callback)
+					 jsonpCallback:"weather",    //自定义的jsonp回调函数名称，默认为jQuery自动生成的随机函数名
+					 success : function(json){
+						 var str='';
+						 if(json.error==0){
+							 var res=json.results
+							 var today=res[0].weather_data[0];
+							 str+='<b>'+today.date+'</b> '+'<img src="'+today.dayPictureUrl+'" title="'+today.weather+'" /> '+'<img src="'+today.nightPictureUrl+'"  title="'+today.weather+'"/> <b>'+today.temperature+'</b>';
+						 }else{
+							str+='<font color="red">天气获取失败,请检查地区名称是否正确!</font>';
+						 }
+						 $('#result').html(str);
+					 },
+					 error:function(){
+						 alert('<font color="red">天气获取失败,请检查地区名称是否正确!</font>');
+					 }
+				});
+			}
+			$(function () {
+				getWeather();
+				$("#input_{$param['name']}").on('blur',function(){
+					getWeather();
+				});
+			});
+		</script>
+	</div>
+	<!-- 百度天气 end -->
+</if>
