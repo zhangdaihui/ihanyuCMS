@@ -63,6 +63,15 @@ return array(
         '__CSS__'    => __ROOT__ . '/Public/' . MODULE_NAME . '/css',
         '__JS__'     => __ROOT__ . '/Public/' . MODULE_NAME . '/js',
     ),
+	'URL_ROUTER_ON'   => false,  
+    'URL_ROUTE_RULES'=>array(
+    	'index' => 'Index/index', //首页 
+    	'article/:id\d$' => 'Article/detail',            //文章页 
+		'category/:category/p/:p$'=> 'Article/lists',    //列表页(分页)
+    	'category/:category$'=> 'Article/lists',         //列表页 
+    	//'category/:category$'=> 'Article/index',       //频道页 
+    	'other/:tags$'=> 'Other/detail',                 //单页页 
+     ),
 
     /* SESSION 和 COOKIE 配置 */
     'SESSION_PREFIX' => 'ihanyucms_home', //session前缀

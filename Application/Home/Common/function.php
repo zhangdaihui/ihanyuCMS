@@ -68,3 +68,13 @@ function get_nav_url($url){
     }
     return $url;
 }
+/**
+ * 获取单页
+ * @param  string $id 单页id
+ * @return string      
+ * @author ihanyu <zhangdaihui@vip.qq.com>
+ */
+function get_page($id){
+    $data=M('Document_page')->getById($id);
+	return $data['content'];
+}
