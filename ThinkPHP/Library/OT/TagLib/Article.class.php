@@ -57,7 +57,7 @@ class Article extends TagLib{
 		$parse .= '$__CATE__ = D(\'Category\')->getChildrenId('.$cate.');';
         $parse .= '$__POSLIST__ = D(\'Document\')->position(';
         $parse .= $pos . ',';
-        $parse .= '$__CATE__,';
+        $parse .= '$__CATE__, \'`level` DESC,`id` DESC\',';
         $parse .= $limit . ',';
         $parse .= $field . ');';
         $parse .= ' ?>';

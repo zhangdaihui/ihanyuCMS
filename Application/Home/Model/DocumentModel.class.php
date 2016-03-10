@@ -238,14 +238,14 @@ class DocumentModel extends Model{
      * @param  boolean $filed    查询字段
      * @return array             数据列表
      */
-    public function position($pos, $category = null, $limit = null, $field = true){
+    public function position($pos, $category = null,$order = '`id` DESC', $limit = null, $field = true){
         $map = $this->listMap($category, 1, $pos);
 
         /* 设置列表数量 */
         is_numeric($limit) && $this->limit($limit);
 
         /* 读取数据 */
-        return $this->field($field)->where($map)->select();
+        return $this->field($field)->where($map)->order($order)->select();
     }
 
     /**
