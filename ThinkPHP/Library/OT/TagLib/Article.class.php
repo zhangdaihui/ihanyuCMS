@@ -49,13 +49,15 @@ class Article extends TagLib{
     public function _position($tag, $content){
         $pos    = $tag['pos'];
         $cate   = $tag['cate'];
+		$child  = empty($tag['child']) ? 'false' : $tag['child'];
         $limit  = empty($tag['limit']) ? 'null' : $tag['limit'];
         $field  = empty($tag['field']) ? 'true' : $tag['field'];
         $name   = $tag['name'];
         $parse  = '<?php ';
+		$parse .= '$__CATE__ = D(\'Category\')->getChildrenId('.$cate.');';
         $parse .= '$__POSLIST__ = D(\'Document\')->position(';
         $parse .= $pos . ',';
-        $parse .= $cate . ',';
+        $parse .= '$__CATE__,';
         $parse .= $limit . ',';
         $parse .= $field . ');';
         $parse .= ' ?>';
