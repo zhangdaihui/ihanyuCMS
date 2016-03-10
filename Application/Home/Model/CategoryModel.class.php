@@ -108,19 +108,21 @@ class CategoryModel extends Model{
     }
 
     /**
-     * 获取指定分类子分类ID
+     * 获取指定分类子分类ID(支持三级分类)
      * @param  string $cate 分类ID
      * @return string       id列表
-     * @author 麦当苗儿 <zuojiazi@vip.qq.com>
+     * @author ihanyu <zhangdaihui@vip.qq.com>
      */
     public function getChildrenId($cate){
         $field = 'id,name,pid,title,link_id';
         $category = D('Category')->getTree($cate, $field);
-		static $ids=array();
         $ids[]    = $cate;
         foreach ($category['_'] as $key => $value) {
             $ids[] = $value['id'];
-			$this->getChildrenId($value['id']);
+			$category = D('Category')->getTree($value['id'], $field);
+			foreach ($category['_'] as $key => $value) {
+				$ids[] = $value['id'];
+			}
         }
 		$ids=array_unique($ids);
         return implode(',', $ids);
