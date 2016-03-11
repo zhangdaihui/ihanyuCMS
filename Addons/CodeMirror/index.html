@@ -1,0 +1,29 @@
+<div class='controls'>
+	<link rel="stylesheet" href="__ADDONROOT__/lib/codemirror.css">
+	<link rel="stylesheet" href="__ADDONROOT__/theme/{:C('CODEMIRROR_THEME')}.css">
+	<script src="__ADDONROOT__/lib/codemirror.js"></script>
+	<script src="__ADDONROOT__/mode/javascript/javascript.js"></script>
+	<script src="__ADDONROOT__/addon/selection/active-line.js"></script>
+	<script src="__ADDONROOT__/addon/edit/matchbrackets.js"></script>
+	<style type="text/css">
+		 .CodeMirror {border: 1px solid black; font-size:16px; width:1000px; height:500px;}
+	</style>
+	<textarea id="code" name="{$param['name']}">{$param['CodeMirror']}</textarea>
+	<script>
+	  var theme='{:C("CODEMIRROR_THEME")}'; 
+	  var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+		lineNumbers: true,
+		styleActiveLine: true,
+		matchBrackets: true
+	  });
+
+	  function selectTheme() {
+		editor.setOption("theme", theme);
+	  }
+	  
+	  editor.setOption("theme", theme);
+	  CodeMirror.on(window, "hashchange", function() {
+		selectTheme();
+	  });
+	</script>
+</div>

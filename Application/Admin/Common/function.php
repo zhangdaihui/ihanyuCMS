@@ -131,6 +131,7 @@ function get_attribute_type($type=''){
         'radio'          =>  array('单选','char(10) NOT NULL'),
         'checkbox'       =>  array('多选','varchar(100) NOT NULL'),
         'editor'         =>  array('编辑器','text NOT NULL'),
+		'codemirror'     =>  array('CodeMirror编辑器','text NOT NULL'),
         'picture'        =>  array('单图','int(10) UNSIGNED NOT NULL'),
 		'uploadpics'     =>  array('多图','varchar(255) NOT NULL'), 
         'file'           =>  array('上传附件','int(10) UNSIGNED NOT NULL'),

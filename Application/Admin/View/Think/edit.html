@@ -78,6 +78,9 @@
                                 {:hook('adminArticleEdit', array('name'=>$field['name'],'value'=>$data[$field['name']]))}
                                 </label>
                             </case>
+							<case value="codemirror">
+                                {:hook('CodeMirror', array('name'=>$field['name'],'CodeMirror'=>$data[$field['name']]))}
+                            </case>
                             <case value="picture">
                                 <div class="controls">
 									<input type="file" id="upload_picture_{$field.name}">
