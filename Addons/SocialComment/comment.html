@@ -1,11 +1,24 @@
 <switch name="addons_config.comment_type">
 	<case value="1">
+		<!-- ËÑºü³©ÑÔ -->
+		<!--¸ßËÙ°æ-->
+		<div id="SOHUCS"></div>
+		<script charset="utf-8" type="text/javascript" src="http://changyan.sohu.com/upload/changyan.js" ></script>
+		<script type="text/javascript">
+			window.changyan.api.config({
+				appid: '{$addons_config.comment_appid_changyan}',
+				conf: '{$addons_config.comment_conf_youyan}'
+			});
+		</script>
+		<!-- /ËÑºü³©ÑÔ -->
+	</case>
+	<case value="2">
 		<!-- UY BEGIN -->
 		<div id="uyan_frame"></div>
 		<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid={$addons_config.comment_uid_youyan}"></script>
 		<!-- UY END -->
 	</case>
-	<case value="2">
+	<case value="3">
 		<!-- Duoshuo Comment BEGIN -->
 		<div class="ds-thread" data-form-positon="{$addons_config.comment_form_pos_duoshuo}" data-limit="{$addons_config.comment_data_list_duoshuo}" data-order="{$addons_config.comment_data_order_duoshuo}"></div>
 		<script type="text/javascript">

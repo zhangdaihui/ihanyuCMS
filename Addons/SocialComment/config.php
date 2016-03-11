@@ -12,14 +12,32 @@ return array(
 		'title'=>'使用类型:',	 //表单的文字
 		'type'=>'select',		 //表单的类型：text、textarea、checkbox、radio、select等
 		'options'=>array(		 //select 和radion、checkbox的子选项
-			'1'=>'有言',		 //值=>文字
-			'2'=>'多说',
+			'1'=>'畅言',
+			'2'=>'友言',		 //值=>文字
+			'3'=>'多说',
 		),
 		'value'=>'1',			 //表单的默认值
 	),
 	'group'=>array(
 		'type'=>'group',
 		'options'=>array(
+			'changyan'=>array(
+				'title'=>'畅言配置',
+				'options'=>array(
+					'comment_appid_changyan'=>array(
+						'title'=>'appid:',
+						'type'=>'text',
+						'value'=>'90040',
+						'tip'=>'填写自己登录畅言后的appid'
+					),
+					'comment_conf_youyan'=>array(
+						'title'=>'conf:',
+						'type'=>'text',
+						'value'=>'90040',
+						'tip'=>'填写自己登录友言后的conf'
+					),
+				)
+			),
 			'youyan'=>array(
 				'title'=>'友言配置',
 				'options'=>array(

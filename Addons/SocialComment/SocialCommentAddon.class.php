@@ -23,8 +23,8 @@ use Common\Controller\Addon;
             'title'=>'通用社交化评论',
             'description'=>'集成了各种社交化评论插件，轻松集成到系统中。',
             'status'=>1,
-            'author'=>'thinkphp',
-            'version'=>'0.1'
+            'author'=>'ihanyu',
+            'version'=>'1.0'
         );
 
         public function install(){
