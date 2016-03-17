@@ -91,7 +91,7 @@ INSERT INTO `ihanyucms_addons` VALUES ('6', 'Attachment', '附件', '用于文�
 INSERT INTO `ihanyucms_addons` VALUES ('9', 'SocialComment', '通用社交化评论', '集成了各种社交化评论插件，轻松集成到系统中。', '1', '{\"comment_type\":\"1\",\"comment_appid_changyan\":\"\",\"comment_conf_youyan\":\"",\"comment_uid_youyan\":\"\",\"comment_short_name_duoshuo\":\"\",\"comment_data_list_duoshuo\":\"\"}', 'ihanyu', '1.0', '1380273962', '0');
 INSERT INTO `ihanyucms_addons` VALUES ('10', 'Share', '分享到', '用于前台显示分享到插件', '1', '{\"share_type\":\"1\"}', 'ihanyu', '1.0', '1456456253', '0');
 INSERT INTO `ihanyucms_addons` VALUES ('18', 'Jscolor', 'Js颜色选择器', '用于自定义字段颜色', '1', 'null', 'ihanyu', '1.0', '1456882861', '0');
-INSERT INTO `ihanyucms_addons` VALUES ('19', 'CodeMirror', 'CodeMirror', 'CodeMirror编辑器', '1', '{\"title\":\"\",\"width\":\"1000\",\"height\":\"400\"}', 'ihanyu', '1.0', '1457676142', '0');
+INSERT INTO `ihanyucms_addons` VALUES ('19', 'CodeMirror', 'CodeMirror', 'CodeMirror编辑器', '1', 'null', 'ihanyu', '1.0', '1457676142', '0');
 
 
 -- -----------------------------
