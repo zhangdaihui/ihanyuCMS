@@ -23,3 +23,6 @@ ihanyuCMS是一个基于OneThink开发的内容管理框架。
 ```sh
 插件 : 通用社交化评论(增加搜狐畅言)
 ```
+```sh
+函数 : is_administrator(支持多个超级管理员配置)
+```

@@ -38,13 +38,18 @@ function is_login(){
 }
 
 /**
- * 检测当前用户是否为管理员
+ * 检测当前用户是否为管理员(修改支持多个超级管理员)
  * @return boolean true-管理员，false-非管理员
- * @author 麦当苗儿 <zuojiazi@vip.qq.com>
+ * @author ihanyu <zhangdaihui@vip.qq.com>
  */
 function is_administrator($uid = null){
-    $uid = is_null($uid) ? is_login() : $uid;
-    return $uid && (intval($uid) === C('USER_ADMINISTRATOR'));
+	$str=C('USER_ADMINISTRATOR');
+	$uid = is_null($uid) ? is_login() : $uid;
+	if(is_array($str)){
+		return $uid && (in_array(intval($uid),$str));
+	}else{
+		return $uid && (intval($uid) === $str);
+	}
 }
 
 /**
