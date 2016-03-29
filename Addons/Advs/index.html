@@ -1,0 +1,14 @@
+<if condition="$list['position'] eq 1">
+	<div class="advs" style="position:relative; width:100%; height:100%;">
+		<a href="{$list.link}" target="_blank"><img alt="{$list.title}" src="{:get_cover($list['advspic'],$field = path)}"/></a>
+		<span style="position:absolute;color:#fff; font-size:12px; left:5px; bottom:5px;">广告</span>
+	</div>
+<elseif condition="$list['position'] eq 2" />
+	<div class="advs">
+		<a href="{$list.link}" target="_blank">{$list.advstext}</a>
+	</div>
+<elseif condition="$list['position'] eq 3" />
+	<div class="advs">
+		{$list.advshtml}
+	</div>
+</if>
