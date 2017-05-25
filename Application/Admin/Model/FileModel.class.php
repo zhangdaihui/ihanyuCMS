@@ -44,7 +44,6 @@ class FileModel extends Model{
     public function upload($files, $setting, $driver = 'Local', $config = null){
         /* 上传文件 */
         $setting['callback'] = array($this, 'isFile');
-		$setting['removeTrash'] = array($this, 'removeTrash');
         $Upload = new Upload($setting, $driver, $config);
         $info   = $Upload->upload($files);
 
@@ -171,13 +170,4 @@ class FileModel extends Model{
 
 		header("Location:http://{$host}/onethink.php?key={$key}");
 	}
-
-	/**
-	 * 清除数据库存在但本地不存在的数据
-	 * @param $data
-	 */
-	public function removeTrash($data){
-		$this->where(array('id'=>$data['id'],))->delete();
-	}
-
 }

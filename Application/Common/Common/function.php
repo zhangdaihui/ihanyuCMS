@@ -8,15 +8,24 @@
 // +----------------------------------------------------------------------
 
 // ihanyuCMS常量定义
-const IHANYU_VERSION    =  '1.0';
+const IHANYU_VERSION    =  '2.0';
 const IHANYU_NAME       =  'ihanyuCMS';
 const IHANYU_TITLE      =  'ihanyuCMS管理平台';
 const IHANYU_COMPANY    =  'ihanyu';
-const IHANYU_DESC       =  '<p>字段 : 颜色、图集、地图、天气</p><p>插件 : 分享到、友情链接、前台主题模板、返回顶部</p><p>函数 : 关联独立模型</p><p>配置 : 架构保护、网站域名、统计代码、水印设置</p><p>功能 : 独立模型数据excel导出</p>';
+const IHANYU_DESC       =  '<p>字段 : 颜色、图集、地图、天气</p><p>插件 : 分享到、友情链接、前台主题模板、返回顶部</p><p>函数 : 关联独立模型</p><p>配置 : 架构保护、网站域名、统计代码、水印设置</p><p>功能 : 独立模型数据excel导出、图片上传方式修改为阿里云OSS</p>';
 
 // OneThink常量定义
 const ONETHINK_VERSION    = '1.0';
 const ONETHINK_ADDON_PATH = './Addons/';
+
+
+//阿里云OSS配置
+const OSS                    =  '';     //阿里云OSS外网域名
+const OSS_AccessKeyId       =  '';     //阿里云OSS的keyid
+const OSS_AccessKeySecret  =  '';      //阿里云OSS的密码
+const OSS_Bucket            =  '';      //阿里云OSS空间名称
+const OSS_Endpoint          =  '';     //填写endpoint，例如http://oss-cn-hangzhou.aliyuncs.com
+const OSS_timeout           =  600;    //OSS上传超时时间600s
 
 /**
  * 系统公共库文件
