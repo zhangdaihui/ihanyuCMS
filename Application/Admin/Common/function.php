@@ -448,3 +448,20 @@ function data_association_d($table,$field){
 	}
 	return $list;
 }
+/**
+ * 图集展示(用于图集字段展示)
+ */
+function getImgsThumb($str){
+    if($str){
+        $str=trim($str,',');
+        $arr=explode(",",$str);
+        $img='';
+        foreach ($arr as $v){
+            $_img=M('Picture')->where("id=$v")->getField('path');
+            $img.="<img src='".$_img."' width='90' height='60' style='margin:0 5px;'/>";
+        }
+        echo ($img);
+    }else{
+        echo '-';
+    }
+}
