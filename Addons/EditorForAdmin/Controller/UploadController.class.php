@@ -78,26 +78,18 @@ class UploadController extends AddonsController {
 	
 	// ueditor编辑器上传图片处理
 	public function ue_upimg() {
-		$info = $this->upload ();
-		$pic_driver = C('EDITOR_UPLOAD_DRIVER');
-		if (strtolower($pic_driver) == 'local') {
-			$img = $info ['imgFile'] ['path'];
-			
-		} else {
-			$img = $info ['imgFile']['url'];
-		}
-		
-		
-		$return = array ();
-		$return ['id'] = $info ['imgFile'] ['id'];
-		$return ['url'] = $img;
-		$title = htmlspecialchars ( $_POST ['pictitle'], ENT_QUOTES );
-		$return ['title'] = $title;
-		$return ['original'] = $info ['imgFile'] ['name'];
-		$return ['state'] = ($img) ? 'SUCCESS' : $this->uploader->getError ();
-		/* 返回JSON数据 */
-		$this->ajaxReturn ( $return );
-	}
+        $info = $this->upload ();
+        $img = 'h'.$info ['imgFile'] ['path'];
+        $return = array ();
+        $return ['id'] = $info ['imgFile'] ['id'];
+        $return ['url'] = $img;
+        $title = htmlspecialchars ( $_POST ['pictitle'], ENT_QUOTES );
+        $return ['title'] = $title;
+        $return ['original'] = $info ['imgFile'] ['name'];
+        $return ['state'] = ($img) ? 'SUCCESS' : $this->uploader->getError ();
+        /* 返回JSON数据 */
+        $this->ajaxReturn ( $return );
+    }
 	// ueditor编辑器在线管理处理
 	// 扫描目录下（包括子文件夹）的图片并返回
 	public function ue_mgimg() {
