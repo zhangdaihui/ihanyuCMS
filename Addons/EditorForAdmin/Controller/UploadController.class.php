@@ -79,15 +79,7 @@ class UploadController extends AddonsController {
 	// ueditor编辑器上传图片处理
 	public function ue_upimg() {
 		$info = $this->upload ();
-		$pic_driver = C('EDITOR_UPLOAD_DRIVER');
-		if (strtolower($pic_driver) == 'local') {
-			$img = $info ['imgFile'] ['path'];
-			
-		} else {
-			$img = $info ['imgFile']['url'];
-		}
-		
-		
+		$img = 'h'.$info ['imgFile'] ['path'];
 		$return = array ();
 		$return ['id'] = $info ['imgFile'] ['id'];
 		$return ['url'] = $img;
