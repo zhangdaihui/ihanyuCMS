@@ -1,4 +1,4 @@
-# ihanyuCMS v1.0
+# ihanyuCMS v2.0
 ihanyuCMS是一个基于OneThink开发的内容管理框架。
 ### 新增
 ```sh
@@ -14,7 +14,7 @@ ihanyuCMS是一个基于OneThink开发的内容管理框架。
 配置 : 架构保护、网站域名、统计代码、水印设置
 ```
 ```sh
-功能 : 独立模型数据excel导出
+功能 : 独立模型数据excel导出、阿里云OSS图片上传
 ```
 ### 修改
 ```sh
